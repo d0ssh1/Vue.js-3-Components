@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Notification Message</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="app">
+    <h1>Notification Center</h1>
+
+    <notification-message type="error" header="Bad news!">
+        Your flight has been canceled!
+    </notification-message>
+
+    <notification-message type="success" header="Good news!">
+        Your booking was successful!
+    </notification-message>
+
+    <notification-message>Hello world!</notification-message>
+</div>
+
+<script type="text/x-template" id="notification-message-template">
+    <div v-if="show" class="notification" :class="type" :header="header">
+        <div class="header"><strong>{{header}}</strong></div>
+        <slot></slot>
+        <button class="close-btn" @click="show = false">х</button>
+    </div>
+</script>
+
+<script src="https://unpkg.com/vue@3"></script>
+<script src="app.js"></script>
+</body>
+</html>
